@@ -1,8 +1,9 @@
-﻿using projekt_zaliczeniowy.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using projekt_zaliczeniowy.Areas.Identity.Data;
+using projekt_zaliczeniowy.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using projekt_zaliczeniowy.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace projekt_zaliczeniowy.Models
 {
@@ -17,15 +18,16 @@ namespace projekt_zaliczeniowy.Models
         [Column(TypeName = "int")]
         public int Regal { get; set; }
         [Column(TypeName = "date")]
-        public DateOnly DataWypozyczenia { get; set; } = new DateOnly();
+        [AllowNull]
+        public DateOnly? DataWypozyczenia { get; set; } = new DateOnly();
 
-        
-        public string UserId { get; set; }
+        [AllowNull]
+        public string? UserId { get; set; }
         [ForeignKey("UserId")]
-        public AppUser User { get; set; }
+        public AppUser? User { get; set; }
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        public Categories Category { get; set; }
+        public Categories? Category { get; set; }
     }
 }

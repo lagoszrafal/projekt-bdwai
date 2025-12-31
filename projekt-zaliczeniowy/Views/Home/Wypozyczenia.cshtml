@@ -1,0 +1,93 @@
+﻿@model IEnumerable<projekt_zaliczeniowy.Models.Books>
+
+@{
+    ViewData["Title"] = "Moje wypozyczenia";
+}
+
+<h1>Moje wypozyczenia</h1>
+
+<h4>
+    Aktualnie wypożyczone
+</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Regal)
+            </th>
+            <th>
+                Data wypożyczenia
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Regal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataWypozyczenia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Nazwa)
+                </td>
+                <td>
+                    <a asp-action="Zwroc" asp-route-id="@item.Id">Zwróc</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr/>
+<h4>
+    Historia wypożyczeń
+</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Działanie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.UserHistory != null)
+        {
+            foreach (var log in (IEnumerable<projekt_zaliczeniowy.Models.History>)ViewBag.UserHistory)
+            {
+                <tr>
+                    <td>
+                        @log.Data.ToString("dd.MM.yyyy")
+                    </td>
+                    <td>
+                        @log.Dzialanie
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">Brak historii do wyświetlenia</td>
+            </tr>
+        }
+    </tbody>
+</table>

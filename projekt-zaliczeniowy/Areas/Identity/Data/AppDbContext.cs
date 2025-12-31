@@ -30,6 +30,11 @@ public class AppDbContext : IdentityDbContext<AppUser>
             new Categories { Id = 2, Nazwa = "Dokument" },
             new Categories { Id = 3, Nazwa = "Naukowe" }
         );
+        builder.Entity<Books>().HasData(
+            new Books { Id = 1, Nazwa = "Tytuł Kryminału", Autor="Jan Kowalski", CategoryId=1, Regal=120 },
+            new Books { Id = 2, Nazwa = "Tytuł Dokumentu", Autor = "Jan Nowak", CategoryId = 2, Regal = 130 },
+            new Books { Id = 3, Nazwa = "Tytuł Książki Naukowej", Autor = "Jan Woźniak", CategoryId = 3, Regal = 10 }
+        );
     }
 
     public void Configure(EntityTypeBuilder<AppUser> builder)

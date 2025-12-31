@@ -1,8 +1,70 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<projekt_zaliczeniowy.Models.Books>
+
+@{
+    ViewData["Title"] = "Przeglądanie książek";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Przeglądanie książek</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Regal)
+            </th>
+            <th>
+                Dostępność
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Regal)
+                </td>
+                <td>
+                    @{
+                        @if (string.IsNullOrEmpty(item.UserId))
+                        {
+                            <span class="badge bg-info">Dostępna</span>
+                        }
+                        else
+                        {
+                            <span class= "badge bg-danger">Niedostępna</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Nazwa)
+                </td>
+                <td>
+                    
+                    @{
+                        @if (string.IsNullOrEmpty(item.UserId))
+                        {
+                            <a asp-action="Borrow" asp-route-id="@item.Id">Wypożycz</a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

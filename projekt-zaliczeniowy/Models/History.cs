@@ -7,7 +7,7 @@ namespace projekt_zaliczeniowy.Models
     public class History
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string Dzialanie { get; set; }
         [Column(TypeName = "date")]
@@ -16,6 +16,6 @@ namespace projekt_zaliczeniowy.Models
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public AppUser User { get; set; }
+        public AppUser? User { get; set; }
     }
 }

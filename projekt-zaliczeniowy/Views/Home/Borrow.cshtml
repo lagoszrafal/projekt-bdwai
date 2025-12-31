@@ -1,0 +1,44 @@
+﻿@model projekt_zaliczeniowy.Models.Books
+
+@{
+    ViewData["Title"] = "Wypożycz";
+}
+
+<h1>Wypożycz</h1>
+
+<h3>Jesteś pewny, że chcesz wypożyczyć tę książkę?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Autor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Autor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Regal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Regal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.Nazwa)
+        </dd>
+    </dl>
+    
+    <form asp-action="Borrow">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Wypożycz" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
