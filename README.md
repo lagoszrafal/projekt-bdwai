@@ -1,4 +1,4 @@
-"# projekt-bdwai - System obsługi biblioteki" 
+# projekt-bdwai - System obsługi biblioteki
 
 
 "AppDbContextConnection": "Server=DESKTOP-U4TP1T6\\SQLEXPRESS;Database=projekt-zaliczeniowy;Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true"
