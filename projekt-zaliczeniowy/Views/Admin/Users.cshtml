@@ -1,0 +1,30 @@
+﻿@model IEnumerable<(projekt_zaliczeniowy.Areas.Identity.Data.AppUser User, string Role)>
+
+<h2>Zarządzanie Użytkownikami</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Imię i Nazwisko</th>
+            <th>Rola</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.Email</td>
+                <td>@item.User.FirstName @item.User.LastName</td>
+                <td>
+                    <span class="badge bg-info">@item.Role</span>
+                </td>
+                <td>
+                    <a asp-action="EditUserRoles" asp-route-userId="@item.User.Id" class="btn btn-sm btn-primary">
+                        Zmień rolę
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

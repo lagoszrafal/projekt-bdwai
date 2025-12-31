@@ -1,6 +1,6 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using projekt_zaliczeniowy.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace projekt_zaliczeniowy.Controllers
 {
